@@ -2,8 +2,10 @@ import Link from "next/link";
 
 export default function RootLayout({
   children,
+  auth,
 }: Readonly<{
   children: React.ReactNode;
+  auth: React.ReactNode;
 }>) {
   return (
     <>
@@ -26,10 +28,19 @@ export default function RootLayout({
               Dashboard
             </Link>
             <Link
+              href="/shop"
+              className="text-gray-700 hover:text-blue-600 transition"
+            >
+              Shop
+            </Link>
+            <Link
               href="/blog"
               className="text-gray-700 hover:text-blue-600 transition"
             >
               Blog
+            </Link>
+            <Link href="/sign-in" className="text-blue-600 underline">
+              Sign In
             </Link>
           </div>
         </div>
@@ -42,6 +53,7 @@ export default function RootLayout({
       <footer className="border-t border-gray-200 mt-12 px-6 py-4 text-center text-sm text-gray-500">
         &copy; {new Date().getFullYear()} Acme Company. All rights reserved.
       </footer>
+      {auth}
     </>
   );
 }
